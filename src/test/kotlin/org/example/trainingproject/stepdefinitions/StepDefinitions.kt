@@ -1,6 +1,7 @@
 package org.example.trainingproject.stepdefinitions
 
 import io.cucumber.java8.En
+import kotlinx.coroutines.runBlocking
 import org.example.trainingproject.TestActions
 import org.example.trainingproject.TestValidations
 
@@ -17,6 +18,11 @@ class StepDefinitions(
 
         Then("the message should be {string}") { expectedText: String ->
            validations.validateMessage(expectedText)
+        }
+
+        Given("there is a pet") {
+            runBlocking { actions.createNewPet() }
+
         }
     }
 }
